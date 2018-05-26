@@ -1,7 +1,8 @@
 import {
     FETCH_CHEESE_REQUEST,
     FETCH_CHEESE_SUCCESS,
-    FETCH_CHEESE_ERROR
+    FETCH_CHEESE_ERROR,
+    ADD_CHEESE
   } from '../actions/cheese';
   
   const initialState = {
@@ -31,6 +32,11 @@ import {
         error: action.error,
         loading: false
       });
+    }
+    if(action.type === ADD_CHEESE) {
+      return Object.assign({}, state, {
+        cheeses: [...state.cheeses, action.cheese]
+      })
     }
     return state
   }
